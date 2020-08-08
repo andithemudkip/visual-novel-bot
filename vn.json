@@ -1,0 +1,82 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "The sounds of crushing metal awaken you. You look around and all you can see is destruction. Death. Rusted steel beams rubbing against each other, making a terrifying whine.\n\n[[Get up|GetUp]]\n[[Stay down for a little more|StayDown]]",
+		"position": {
+			"x": 192,
+			"y": 269
+		},
+		"colorID": 0
+	},
+	{
+		"title": "GetUp",
+		"tags": "",
+		"body": "You slowly rise and look around. Suddenly, you hear someone calling your name in a distant corridor.\n\n[[ Run to the corridor|EnterCorridor]]\n[[ Slowly walk over to the corridor|EnterCorridor]]\n[[ Ignore it|IgnoreCall]]",
+		"position": {
+			"x": 694,
+			"y": 112
+		},
+		"colorID": 0
+	},
+	{
+		"title": "StayDown",
+		"tags": "",
+		"body": "You keep laying down and try to regain your senses. Everything is a blur but you remember flashing red lights and a siren.\n\n[[Get Up|GetUp]]\n[[zZz|StayDown]]",
+		"position": {
+			"x": 697,
+			"y": 405
+		},
+		"colorID": 0
+	},
+	{
+		"title": "EnterCorridor",
+		"tags": "",
+		"body": "As you reach the corridor entrance you notice someone. You feel like you should know who they are, and yet, it's all still a blur.",
+		"position": {
+			"x": 1283,
+			"y": 168
+		},
+		"colorID": 0
+	},
+	{
+		"title": "IgnoreCall",
+		"tags": "",
+		"body": "You ignore the voice and keep staring around\n\nWoman: Oh my gosh. I thought I lost you too. Are you okay?\n\n[[ I'm okay|AnswerOkay]]\n[[ I...can't remember... anything|AnswerAmnesia]]\n[[ That doesn't matter, are YOU okay?|AnswerAsk]]",
+		"position": {
+			"x": 1278,
+			"y": -86
+		},
+		"colorID": 0
+	},
+	{
+		"title": "AnswerOkay",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 1679,
+			"y": -44
+		},
+		"colorID": 0
+	},
+	{
+		"title": "AnswerAmnesia",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 1671,
+			"y": -260
+		},
+		"colorID": 0
+	},
+	{
+		"title": "AnswerAsk",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 1663,
+			"y": -483
+		},
+		"colorID": 0
+	}
+]
