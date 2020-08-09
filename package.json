@@ -12,6 +12,7 @@
   "dependencies": {
     "@alpha-manager/core": "^1.0.6",
     "@alpha-manager/fb": "^1.0.6",
-    "bondage": "^2.2.0"
+    "bondage": "^2.2.0",
+    "jimp": "^0.16.0"
   }
 }

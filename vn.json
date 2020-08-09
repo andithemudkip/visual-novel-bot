@@ -2,80 +2,210 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "The sounds of crushing metal awaken you. You look around and all you can see is destruction. Death. Rusted steel beams rubbing against each other, making a terrifying whine.\n\n[[Get up|GetUp]]\n[[Stay down for a little more|StayDown]]",
+		"body": "Loud chatter and booming speakers blasting music awaken you. As you open your eyes the bright light of neon signs violently attacks your eyeballs. You slowly look around and see people from all walks of life - some trying to drown their sorrows, while others enjoying a casual meeting with their friends. You suddenly hear a robotic voice: “The gun has been reloaded, sign below to play Russian Roulette” followed by three or four seconds of silence, and then, a loud bang.\r\n\r\n[[You whisper \"You were shot, haha shot\"|hahaShot]]\r\n[[Huh? Where am I? What is this place?|dumbQuestion]]",
 		"position": {
-			"x": 192,
-			"y": 269
+			"x": 563,
+			"y": -65
 		},
 		"colorID": 0
 	},
 	{
-		"title": "GetUp",
+		"title": "hahaShot",
 		"tags": "",
-		"body": "You slowly rise and look around. Suddenly, you hear someone calling your name in a distant corridor.\n\n[[ Run to the corridor|EnterCorridor]]\n[[ Slowly walk over to the corridor|EnterCorridor]]\n[[ Ignore it|IgnoreCall]]",
+		"body": "It turns out everyone heard what you just said; the whole bar suddenly became silent, leaving only the quiet chirp of cicadas to be heard silently in the distance. \r\nA nearby bartender notices what just happened, swiftly grabs you by your hand and drags you over to the back room.\r\nWith an annoyed look on his face he asks: What the FRAK is wrong with you?\r\n\r\n[[HAHA SHOT|hahaShot2]]\r\n[[I..uh..Wh-|Confused]]",
 		"position": {
-			"x": 694,
-			"y": 112
+			"x": 910,
+			"y": -306
 		},
 		"colorID": 0
 	},
 	{
-		"title": "StayDown",
+		"title": "dumbQuestion",
 		"tags": "",
-		"body": "You keep laying down and try to regain your senses. Everything is a blur but you remember flashing red lights and a siren.\n\n[[Get Up|GetUp]]\n[[zZz|StayDown]]",
+		"body": "A nearby bartender noticed you and with a worried look on his face he said \"Hey, you! You're finally awake.\" as he discretely gestured a sign that could only mean \"follow me\".\r\nYou decide to follow him - who knows, you might find some information about the predicament you find yourself in. After a couple steps you find yourself in the back room of the bar.\r\n\r\n[[What is going on?|Confused]]\r\n[[Who are you?|Confused]]",
 		"position": {
-			"x": 697,
-			"y": 405
+			"x": 913,
+			"y": 110
 		},
 		"colorID": 0
 	},
 	{
-		"title": "EnterCorridor",
+		"title": "Confused",
 		"tags": "",
-		"body": "As you reach the corridor entrance you notice someone. You feel like you should know who they are, and yet, it's all still a blur.",
+		"body": "Bartender: Listen, kid,  I wish I could tell you more, but all I know is that I found you passed out on the sidewalk a couple hours away and brought you here. Name's Bartender Bot 1862, by the way. Now, are you feeling alright?\n\n[[What is this place?|placeQuestion]]\n[[I...think so.|feelingAnswer]]",
 		"position": {
-			"x": 1283,
-			"y": 168
+			"x": 1969,
+			"y": 298
 		},
 		"colorID": 0
 	},
 	{
-		"title": "IgnoreCall",
+		"title": "hahaShot2",
 		"tags": "",
-		"body": "You ignore the voice and keep staring around\n\nWoman: Oh my gosh. I thought I lost you too. Are you okay?\n\n[[ I'm okay|AnswerOkay]]\n[[ I...can't remember... anything|AnswerAmnesia]]\n[[ That doesn't matter, are YOU okay?|AnswerAsk]]",
+		"body": "Bartender: You think this is a joke?\n\n[[haha...shot?|bartenderAnswer]]\n[[I'm sorry|bartenderAnswer]]",
 		"position": {
-			"x": 1278,
-			"y": -86
+			"x": 1337,
+			"y": -501
 		},
 		"colorID": 0
 	},
 	{
-		"title": "AnswerOkay",
+		"title": "bartenderAnswer",
 		"tags": "",
-		"body": "Empty Text",
+		"body": "Bartender: Whatever. Name's Bartender Bot 1862. I found you passed out on the sidewalk a couple hours ago. Brought you here for uh... safekeeping. Are you alright?\n\n[[What is this place?|placeQuestion]]\n[[I...think so.|feelingAnswer]]",
 		"position": {
-			"x": 1679,
-			"y": -44
+			"x": 1943,
+			"y": -414
 		},
 		"colorID": 0
 	},
 	{
-		"title": "AnswerAmnesia",
+		"title": "placeQuestion",
 		"tags": "",
-		"body": "Empty Text",
+		"body": "Bartender Bot 1862: The international space station.\n\n[[Oh.|locationAnswer]]\n[[We're in SPACE?|locationAnswer]]",
 		"position": {
-			"x": 1671,
-			"y": -260
+			"x": 2527,
+			"y": -208
 		},
 		"colorID": 0
 	},
 	{
-		"title": "AnswerAsk",
+		"title": "feelingAnswer",
 		"tags": "",
-		"body": "Empty Text",
+		"body": "BartenderBot 1862: We--\n\nHe is suddenly interrupted by a deafening whine coming from seemingly everywhere. After a couple seconds a giant portal opens right next to the ship, engulfing every last ray of sunlight hitting it. The bartender picks up a shotgun from behind the bar and mumbles \"Not again...\".\n\n[[WHAT THE FRAK IS GOING ON?!|portalOpens]]\n[[Hm. That's concerning.|portalOpens]]",
 		"position": {
-			"x": 1663,
-			"y": -483
+			"x": 2887,
+			"y": 307
+		},
+		"colorID": 0
+	},
+	{
+		"title": "locationAnswer",
+		"tags": "",
+		"body": "BartenderBot 1862: Yeah, I thought that was pretty cle---\n\nA kilometer-wide portal opens in the sky, engulfing almost every ray of sunlight. Every living being runs for their life as the bartender picks up a shotgun and mumbles \"Not again...\"\n\n[[WHAT THE FRAK IS GOING ON?!|portalOpens]]\n[[Hm. That's concerning.|portalOpens]]",
+		"position": {
+			"x": 2885,
+			"y": -109
+		},
+		"colorID": 0
+	},
+	{
+		"title": "portalOpens",
+		"tags": "",
+		"body": "BartenderBot 1862: The penguins. They've taken over the Earth - that's why we're here. We THOUGHT we'd be safe here.\nEveryone rushes to safety as the loud bangs of the penguins landing onto the station get closer and closer.\n\n[[*Scream in terror*|screamAnswer]]\n[[How can I help?|calmAnswer]]",
+		"position": {
+			"x": 3368,
+			"y": 120
+		},
+		"colorID": 0
+	},
+	{
+		"title": "screamAnswer",
+		"tags": "",
+		"body": "BartenderBot 1862: Here, take this drink. Should help put you back on your feet. I recommend making your way to the other end of the station, there's an older fellow there that should be able to help you. He used to go by the name BurgerBot 4545 back when he was part of the resistance in the World Wars. He likes to keep a low profile nowadays, but you show be able to find him.\n\n[[Okay...|walkToOtherEndOfStation]]\n[[How is he supposed to help me?|stupidQuestion]]",
+		"position": {
+			"x": 3879,
+			"y": 9
+		},
+		"colorID": 0
+	},
+	{
+		"title": "calmAnswer",
+		"tags": "",
+		"body": "BartenderBot 1862: Go over to the other end of the station and find someone by the name of BurgerBot 4545. He's an older fellow; been part of the first resistance back in the World Wars. He likes to keep a low profile these days, but you should be able to find him. He's gonna make you useful.\n\n[[Turn around and start walking|walkToOtherEndOfStation]]\n[[Start running and looking around|walkToOtherEndOfStation]]",
+		"position": {
+			"x": 3888,
+			"y": 370
+		},
+		"colorID": 0
+	},
+	{
+		"title": "walkToOtherEndOfStation",
+		"tags": "",
+		"body": "You make your way past the people screaming in terror. This is the first moment of clarity you've had since you woke up in this place. You don't know how it happened - or really, you don't know anything from before you woke up. You slow your pace a bit trying to take in the environment - maybe you can remember something. You see a nearly-destroyed yellow silhouette of a bun. \n\n\"That must be it\" - you think - \"BurgerBot\".\n\nYou walk closer to it and start yelling:\n\n[[HEY! IS ANYONE THERE?|yelling]]\n[[BurgerBot?|yelling]]\n[[Bun. Scream. Bun.|yelling]]",
+		"position": {
+			"x": 4848,
+			"y": 228
+		},
+		"colorID": 0
+	},
+	{
+		"title": "stupidQuestion",
+		"tags": "",
+		"body": "BartenderBot 1862: He can get you protection. This isn't the first time he's faced the penguins and he's still here, so he must be doing something right. Now go.\n\n[[Okay.|walkToOtherEndOfStation]]",
+		"position": {
+			"x": 4403,
+			"y": -225
+		},
+		"colorID": 0
+	},
+	{
+		"title": "penguinConfusion",
+		"tags": "",
+		"body": "You look at him confused.\n[[Wait. I'm a penguin?|final]]",
+		"position": {
+			"x": 7673,
+			"y": 266
+		},
+		"colorID": 0
+	},
+	{
+		"title": "final",
+		"tags": "",
+		"body": "Penguin General: Always have been.",
+		"position": {
+			"x": 7998,
+			"y": 268
+		},
+		"colorID": 0
+	},
+	{
+		"title": "yelling",
+		"tags": "",
+		"body": "You get pulled pulled over into a dark alley by a mysterious figure.\nBurgerBot 4545: Who sent you here? You can't be here. There's a full on penguin invasion - you have to get to safety.\n\n[[BartenderBot sent me here|bartenderSentHere]]\n[[A bartender|bartenderSentHere]]\n[[Odd bloke with a TV head|bartenderSentHere]]",
+		"position": {
+			"x": 5325,
+			"y": 229
+		},
+		"colorID": 0
+	},
+	{
+		"title": "bartenderSentHere",
+		"tags": "",
+		"body": "BurgerBot 4545: Oh, for frak's sake. Come. Follow me.\n\nYou hear a beeping sound coming from behind. You and look back and there's a little device implanted into your shoulder that's flashing and beeping.\n\n[[Hey..what is this?|pointOutDevice]]\n[[*say nothing*|continueWithoutSayingAnything]]",
+		"position": {
+			"x": 5726,
+			"y": 227
+		},
+		"colorID": 0
+	},
+	{
+		"title": "pointOutDevice",
+		"tags": "",
+		"body": "BurgerBot 4545: Let me take a look- OH NO\n\n[[*visible confusion*|deviceConfusion]]\n[[What is it?|deviceConfusion]]\n[[IS IT A BOMB?|deviceConfusion]]",
+		"position": {
+			"x": 6540,
+			"y": -87
+		},
+		"colorID": 0
+	},
+	{
+		"title": "continueWithoutSayingAnything",
+		"tags": "",
+		"body": "You walk through the shadows, not to spotted by anyone, but with every step you take the beeping gets that much louder. Eventually, BurgerBot hears it and looks back.\n\nBurgerBot 4545: OH NO\n\n[[*visible confusion*|deviceConfusion]]\n[[What is it?|deviceConfusion]]\n[[IS IT A BOMB?|deviceConfusion]]",
+		"position": {
+			"x": 6532,
+			"y": 549
+		},
+		"colorID": 0
+	},
+	{
+		"title": "deviceConfusion",
+		"tags": "",
+		"body": "Suddenly, penguins gather all around you, cornering you and BurgerBot. What seems to be their general turns towards you and says:\n\nPenguin General: Good job Cadet. You've done your part well. Thanks to your work, we've finally caught this bastard.\n\n[[Wait what|penguinConfusion]]\n[[Cadet???|penguinConfusion]]",
+		"position": {
+			"x": 7164,
+			"y": 244
 		},
 		"colorID": 0
 	}

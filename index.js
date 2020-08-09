@@ -3,31 +3,15 @@ const bondage = require ('bondage');
 
 const runner = new bondage.Runner ();
 const yarnData = JSON.parse (fs.readFileSync ('vn.json'));
-const checkPoint = fs.readFileSync ('latestCheckpoint.txt', 'utf8');
+let checkPoint = fs.readFileSync ('latestCheckpoint.txt', 'utf8');
 
 const { Task } = require ('@alpha-manager/core');
 const FB = require ('@alpha-manager/fb');
+const Jimp = require ('jimp');
 
 const fb = new FB ().config (JSON.parse (fs.readFileSync ('creds.json', 'utf8')));
 
 runner.load (yarnData);
-
-// Loop over the dialogue from the node titled 'Start'
-// for (const result of runner.run('Start')) {
-//     // Do something else with the result
-//     if (result instanceof bondage.TextResult) {
-//       console.log (result.text);
-//     } else if (result instanceof bondage.OptionsResult) {
-//       // This works for both links between nodes and shortcut options
-//       console.log (result.options);
-  
-//       // Select based on the option's index in the array (if you don't select an option, the dialog will continue past them)
-//       result.select (1);
-//     } else if (result instanceof bondage.CommandResult) {
-//        // If the text was inside <<here>>, it will get returned as a CommandResult string, which you can use in any way you want
-//       console.log (result.text);
-//     }
-//   }
 
 let reacts = {
     LIKE: 0,
@@ -42,35 +26,68 @@ let currentVotes = [];
 
 let d = runner.run (checkPoint);
 
-
 let pendingOptions = null;
 
-
-
-let tsk = new Task ()
+new Task ()
     .to (fb)
     .do (async post => {
-
-        // if there are any pending options, get the fb post
-        // <get fb post reactions>
-        // pendingOptions.set ()
-        if (pendingOptions != null) {
+        if (pendingOptions != null && !pendingOptions.done) {
             let lastPost = await fb.get.posts.latest (1, { fields: 'id' });
             let reactions = await fb.get.reactions (lastPost [0].id, { fields: 'type' });
 
             if (!reactions.length) {
                 // post again ?
+                // pick one at random ?
+            } else {
+                for (let react of reactions) {
+                    currentVotes [reacts [react.type]]++;
+                }
             }
 
-            for (let i = 0; i < 6; i++) {
-                currentVotes [i] = 0;
+            let localMaxIndex = 0;
+            for (let i = 0; i < pendingOptions.value.options.length; i++) {
+                if (currentVotes [i] > localMaxIndex) localMaxIndex = i;
             }
 
-            for (let react of reactions) {
-                currentVotes [reacts [react.type]]++;
-            }
+            console.log (`picked [${pendingOptions.value.options [localMaxIndex]}]`);
 
-            console.log (currentVotes);
+            pendingOptions.value.select (localMaxIndex);
+
+            let txt = '';
+            let currentRes;
+            do {
+                currentRes = d.next ();
+                if (currentRes.value instanceof bondage.TextResult) {
+                    txt += currentRes.value.text + '\n';
+                    checkPoint = currentRes.value.data.title;
+                } else {
+                    opts = currentRes;
+                }
+            } while (currentRes.value instanceof bondage.TextResult)
+
+            fs.writeFileSync ('latestCheckpoint.txt', checkPoint);
+
+            pendingOptions = opts;
+
+            currentVotes = [0, 0, 0, 0, 0, 0];
+
+            post.type = "post";
+            post.message = txt;
+            
+
+            await createImage (checkPoint, opts.value ? opts.value.options : []);
+
+            post.media = `./output/${checkPoint}.png`;
+
+
+            // if (!opts.done) {
+            //     for (let i = 0; i < opts.value.options.length; i++) {
+            //         post.message += '\n';
+            //         post.message += Object.keys (reacts) [i] + ' ' + opts.value.options [i];
+            //     }
+            // }
+
+            post.done ();
 
         } else {
             // either first post of a story or the bot restarted
@@ -79,29 +96,25 @@ let tsk = new Task ()
 
             pendingOptions = opts;
 
-            currentVotes = [];
-
             post.type = "post";
-            post.message = txt.value.text;
 
-            for (let i = 0; i < opts.value.options.length; i++) {
-                post.message += '\n';
-                post.message += Object.keys (reacts) [i] + ' ' + opts.value.options [i];
+            if (!txt.done && !opts.done) {
 
+                checkPoint = txt.value.data.title;
+
+                currentVotes = [0, 0, 0, 0, 0, 0];
+
+                post.message = txt.value.text;
+
+                await createImage (checkPoint, opts.value.options);
+
+                post.media = `./output/${checkPoint}.png`;
+    
+                post.done ();
+            } else {
+                console.log ('final post?');
             }
-
-            // post.message += '\n';
-            // post.message += pendingOptions.value.options
-            post.done ();
         }
-
-        // let txt = d.next ();
-        // let opts = d.next ();
-        // action.type = "post";
-        // action.message = txt;
-        
-        // post it to fb
-
     })
     .onEvent ('response', () => {
         console.log ('posted');
@@ -109,47 +122,32 @@ let tsk = new Task ()
     .onEvent ('error', err => {
         console.log (err);
     })
+    // .every (6).hour ()
     .every (30).second ()
-    // .immediate ()
     .start ();
 
 
-// let res = d.next ();
-// console.log (res);
-// res = d.next ();
-// console.log (res);
-// res.value.select (0);
-// res = d.next ();
-// console.log (res);
-// res = d.next ();
-// console.log (res);
 
+let createImage = async (node, options) => {
+    let fredoka48 = await Jimp.loadFont ("fonts/fredoka/fredoka.fnt");
 
-// let getNextNode = (d) => {
-//     let res = { done: false }
-//     let textRes = [], optionsRes;
-    
-//     while (!res.done) {
-//         res = d.next ();
-//         console.log (res);
-//         if (res.value instanceof bondage.TextResult) textRes.push (res.value.text);
-//         else if (res.value instanceof bondage.OptionsResult) optionsRes = res;
-//     }
-    
-//     return [textRes, optionsRes];
-// }
+    let baseImage = await Jimp.read (`./images/${node}.png`);
 
+    let baseHeight = baseImage.getHeight ();
+    let baseWidth = baseImage.getWidth ();
+    let outImage = new Jimp (baseImage.getWidth (), baseHeight + (options.length) * 64 + 12, 0x000000ff);
+    outImage.blit (baseImage, 0, 0);
 
-// let [tRes, oRes] = getNextNode (d);
-// console.log ('DONE', tRes, oRes);
+    for (let i = 0; i < options.length; i++) {
+        let reactImage = await Jimp.read (`./reacts/${Object.keys (reacts) [i]}.png`);
+        reactImage.resize (48, 48);
+        outImage.blit (reactImage, 20, baseHeight + 60 * i + 20);
+        outImage.print (fredoka48, 80, baseHeight + 60 * i + 20, options [i], baseWidth - 20);
+    }
 
-// oRes.value.select (0);
+    await outImage.writeAsync (`./output/${node}.png`);
+}
 
-
-// console.log (d.next ());
-
-// let [tRes2, oRes2] = getNextNode (d);
-// console.log ('DONE', tRes2, oRes2);
-
-
-
+// (async function () {
+//     await createImage ("Start", [ "Get Up", `You whisper: "You were shot, haha shot"` ]);
+// }) ();
