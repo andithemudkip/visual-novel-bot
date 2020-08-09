@@ -72,20 +72,11 @@ new Task ()
             currentVotes = [0, 0, 0, 0, 0, 0];
 
             post.type = "post";
-            post.message = txt;
-            
+            // post.message = " ";
 
             await createImage (checkPoint, opts.value ? opts.value.options : []);
 
             post.media = `./output/${checkPoint}.png`;
-
-
-            // if (!opts.done) {
-            //     for (let i = 0; i < opts.value.options.length; i++) {
-            //         post.message += '\n';
-            //         post.message += Object.keys (reacts) [i] + ' ' + opts.value.options [i];
-            //     }
-            // }
 
             post.done ();
 
@@ -104,7 +95,7 @@ new Task ()
 
                 currentVotes = [0, 0, 0, 0, 0, 0];
 
-                post.message = txt.value.text;
+                // post.message = txt.value.text;
 
                 await createImage (checkPoint, opts.value.options);
 
@@ -147,7 +138,3 @@ let createImage = async (node, options) => {
 
     await outImage.writeAsync (`./output/${node}.png`);
 }
-
-// (async function () {
-//     await createImage ("Start", [ "Get Up", `You whisper: "You were shot, haha shot"` ]);
-// }) ();
