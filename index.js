@@ -113,8 +113,8 @@ new Task ()
     .onEvent ('error', err => {
         console.log (err);
     })
-    // .every (6).hour ()
-    .every (30).second ()
+    .every (6).hour ()
+    //.every (30).second ()
     .start ();
 
 
