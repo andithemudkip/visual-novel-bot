@@ -114,6 +114,7 @@ new Task ()
         console.log (err);
     })
     .every (12).hour ()
+    //.every (30).second () 
     .start ();
 
 
